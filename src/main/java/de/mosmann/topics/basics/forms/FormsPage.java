@@ -5,13 +5,15 @@ import org.apache.wicket.model.Model;
 
 import de.mosmann.topics.BasePage;
 
-
 public class FormsPage extends BasePage {
 
-	
 	public FormsPage() {
 		add(new FeedbackPanel("feedback"));
-		
-		add(new MagicFormPanel("magic", Model.of(new FormData())));
+
+		Model<FormData> model = Model.of(new FormData());
+
+		add(new MagicFormPanel("magic", model));
+		add(new PropertyFormPanel("property", model));
+		add(new TypeSafeFormPanel("typesafe", model));
 	}
 }

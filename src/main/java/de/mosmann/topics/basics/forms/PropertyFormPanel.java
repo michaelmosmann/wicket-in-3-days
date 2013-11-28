@@ -6,13 +6,15 @@ import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.IModel;
+import org.apache.wicket.model.PropertyModel;
 
-public class MagicFormPanel extends AbstractSameMarkupFormPanel {
 
-	public MagicFormPanel(String id, final IModel<FormData> model) {
+public class PropertyFormPanel extends AbstractSameMarkupFormPanel  {
+
+	public PropertyFormPanel(String id, final IModel<FormData> model) {
 		super(id);
 
-		Form<FormData> form = new Form<FormData>("form", new CompoundPropertyModel<FormData>(model)) {
+		Form<FormData> form = new Form<FormData>("form", model) {
 
 			@Override
 			protected void onSubmit() {
@@ -20,9 +22,10 @@ public class MagicFormPanel extends AbstractSameMarkupFormPanel {
 				info("submit done with " + getModelObject());
 			}
 		};
-		form.add(new TextField<>("name"));
-		form.add(new TextField<>("size"));
-		form.add(new TextField<>("birthday"));
+		form.add(new TextField<>("name",new PropertyModel<>(model, "name")));
+		form.add(new TextField<>("size",new PropertyModel<>(model, "size")));
+		form.add(new TextField<>("birthday",new PropertyModel<>(model, "birthday")));
+		
 		form.add(new Button("submit") {
 			@Override
 			public void onSubmit() {
