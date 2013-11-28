@@ -3,7 +3,7 @@ package de.mosmann.topics;
 import com.google.common.collect.ImmutableList;
 
 public enum Day {
-	One(Topic.MarkupMagic,Topic.Components),
+	One(Topic.MarkupMagic,Topic.Components,Topic.Forms),
 	Two(Topic.Persistence),
 	Three;
 
