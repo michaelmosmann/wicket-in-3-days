@@ -1,4 +1,4 @@
-package de.mosmann.topics.persistence;
+package de.mosmann.topics.advanced.persistence;
 
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.panel.Panel;

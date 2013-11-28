@@ -8,7 +8,7 @@ import org.apache.wicket.markup.html.list.ListView;
 
 import com.google.common.collect.ImmutableList;
 
-public class OverviewPage extends WebPage {
+public class OverviewPage extends BasePage {
 
 	public OverviewPage() {
 

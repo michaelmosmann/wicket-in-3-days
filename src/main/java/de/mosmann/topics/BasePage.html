@@ -2,12 +2,22 @@
 <html xmlns:wicket="http://wicket.apache.org">
 	<head>
 		<meta charset="utf-8" />
-		<title>Manage Users</title>
+		<title wicket:id="_title_tag"></title>
 		<link href='http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz:regular,bold' rel='stylesheet' type='text/css' />
 		<link rel="stylesheet" href="style.css" type="text/css" media="screen" title="Stylesheet" />
 	</head>
 	<body>
-		<h1>Manage Users</h1>
-		<wicket:container wicket:id="showUser">will be replaced</wicket:container>
+		<div id="hd">
+			<div id="logo">
+				<img src="logo.png" width="50px" height="50px" alt="Wicket Logo" />
+				<h1 wicket:id="_title"></h1>
+				<a wicket:id="_back">Overview</a>
+			</div>
+		</div>
+		<div id="bd">
+			<wicket:child />
+		</div>
+		<div id="ft">
+		</div>
 	</body>
 </html>

@@ -1,23 +1,12 @@
-<!DOCTYPE html>
-<html xmlns:wicket="http://wicket.apache.org">
-	<head>
-		<meta charset="utf-8" />
-		<title>Overview</title>
-		<link href='http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz:regular,bold' rel='stylesheet' type='text/css' />
-		<link rel="stylesheet" href="style.css" type="text/css" media="screen" title="Stylesheet" />
-	</head>
-	<body>
-		<h1>Topics</h1>
-		
-		<ul>
-			<li wicket:id="days">
-				<span wicket:id="day"></span>
-				<ul>
-					<li wicket:id="topics">
-						<a wicket:id="link"><span wicket:id="topic"></span></a>
-					</li>
-				</ul>
-			</li>
-		</ul>
-	</body>
-</html>
+<wicket:extend>
+	<ul>
+		<li wicket:id="days">
+			<span wicket:id="day"></span>
+			<ul>
+				<li wicket:id="topics">
+					<a wicket:id="link"><span wicket:id="topic"></span></a>
+				</li>
+			</ul>
+		</li>
+	</ul>
+</wicket:extend>
