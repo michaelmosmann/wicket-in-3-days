@@ -93,12 +93,19 @@
 			<artifactId>wicket-extensions</artifactId>
 			<version>${wicket.version}</version>
 		</dependency>
-<dependency>
-    <groupId>de.flapdoodle.wicket6</groupId>
-    <artifactId>de.flapdoodle.wicket--models</artifactId>
-    <version>${flapdoodle.wicket.version}</version>
-</dependency>
-
+		
+		<!--  HELPFULL DEPENDENCIES -->
+		<dependency>
+			<groupId>de.flapdoodle.wicket6</groupId>
+			<artifactId>de.flapdoodle.wicket--models</artifactId>
+			<version>${flapdoodle.wicket.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava</artifactId>
+			<version>14.0.1</version>
+		</dependency>
+            
 		<!-- LOGGING DEPENDENCIES - LOG4J -->
 		<dependency>
 			<groupId>org.slf4j</groupId>

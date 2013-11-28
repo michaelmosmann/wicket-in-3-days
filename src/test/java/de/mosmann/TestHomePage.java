@@ -4,6 +4,11 @@ import org.apache.wicket.util.tester.WicketTester;
 import org.junit.Before;
 import org.junit.Test;
 
+import com.google.inject.Guice;
+import com.google.inject.Injector;
+
+import de.mosmann.config.Tests;
+
 /**
  * Simple test using the WicketTester
  */
@@ -14,7 +19,8 @@ public class TestHomePage
 	@Before
 	public void setUp()
 	{
-		tester = new WicketTester(new WicketApplication());
+		Injector injector = Guice.createInjector(new Tests());
+		tester = new WicketTester(new WicketApplication(injector));
 	}
 
 	@Test
