@@ -8,7 +8,7 @@ import de.mosmann.persistence.entity.User;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
-public class JpaService implements IService {
+public class UserService implements IUserService {
     @Inject
     private EntityManager em;
 

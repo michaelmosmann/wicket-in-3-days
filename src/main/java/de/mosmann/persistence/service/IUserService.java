@@ -4,7 +4,7 @@ import com.google.inject.ImplementedBy;
 
 import de.mosmann.persistence.entity.User;
 
-@ImplementedBy(JpaService.class)
-public interface IService {
+@ImplementedBy(UserService.class)
+public interface IUserService {
     public User getUser();
 }

@@ -10,12 +10,12 @@ import com.google.inject.Inject;
 import de.flapdoodle.functions.Function1;
 import de.flapdoodle.wicket.model.Models;
 import de.mosmann.persistence.entity.User;
-import de.mosmann.persistence.service.IService;
+import de.mosmann.persistence.service.IUserService;
 
 public class ShowUserPanel extends Panel {
 
 	@Inject
-	private IService service;
+	private IUserService service;
 
 	public ShowUserPanel(String id) {
 		super(id);
