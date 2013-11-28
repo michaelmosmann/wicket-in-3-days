@@ -1,3 +1,14 @@
+target
+velocity.log
+*~
+.classpath
+.cache
+.project
+.settings
+.externalToolBuilders
+.scala_dependencies
+.idea
+
 *.class
 
 # Package Files #

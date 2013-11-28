@@ -45,6 +45,7 @@
         <guice.version>3.0</guice.version>
 		<wicket.version>6.12.0</wicket.version>
 		<jetty.version>7.6.13.v20130916</jetty.version>
+		<flapdoodle.wicket.version>6.7.0</flapdoodle.wicket.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 	<dependencies>
@@ -92,6 +93,11 @@
 			<artifactId>wicket-extensions</artifactId>
 			<version>${wicket.version}</version>
 		</dependency>
+<dependency>
+    <groupId>de.flapdoodle.wicket6</groupId>
+    <artifactId>de.flapdoodle.wicket--models</artifactId>
+    <version>${flapdoodle.wicket.version}</version>
+</dependency>
 
 		<!-- LOGGING DEPENDENCIES - LOG4J -->
 		<dependency>
