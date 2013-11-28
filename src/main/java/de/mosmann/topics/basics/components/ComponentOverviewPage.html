@@ -3,11 +3,23 @@
 	
 	<h2>Content</h2>
 	<span wicket:id="label"></span><br>
+	<span wicket:id="multiline"></span><br>
 	
-	<h2>Links</h2>
+	<h2>Some Links</h2>
 	<a wicket:id="link">Link</a><br>
 	<a wicket:id="ajaxLink">AjaxLink</a><br>
 	<a wicket:id="bookmark">BookmarkableLink</a><br>
+	<a wicket:id="external">External (worth it)</a><br>
+	
+	<h2>Repeater</h2>
+	<ul><li wicket:id="list"><span wicket:id="item"></span></li></ul>
+	<p><span wicket:id="repeatView">Content</span> </p>
 	
 	<h2>Grouping</h2>
+	<wicket:container wicket:id="container"><div style="border:1px dotted blue;">I am in a container</div></wicket:container>
+	<wicket:container wicket:id="border"><span wicket:id="inner"></span></wicket:container>
+	<wicket:container wicket:id="panel"></wicket:container>
+	<wicket:container wicket:id="fragment"></wicket:container>
+	
+	<wicket:fragment wicket:id="source">ooohooW</wicket:fragment>
 </wicket:extend>
