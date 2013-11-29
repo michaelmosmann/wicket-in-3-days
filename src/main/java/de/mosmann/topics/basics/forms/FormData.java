@@ -3,8 +3,16 @@ package de.mosmann.topics.basics.forms;
 import java.io.Serializable;
 import java.util.Date;
 
+import de.mosmann.topics.basics.forms.models.Birthday;
+import de.mosmann.topics.basics.forms.models.Name;
+import de.mosmann.topics.basics.forms.models.Size;
+
 public class FormData implements Serializable {
 
+	public static Name Name=new Name();
+	public static Size Size=new Size();
+	public static Birthday Birthday=new Birthday();
+	
 	String _name;
 	int _size;
 	Date _birthday;
