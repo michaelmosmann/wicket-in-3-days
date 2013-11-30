@@ -4,6 +4,7 @@ import org.apache.wicket.markup.html.panel.FeedbackPanel;
 import org.apache.wicket.model.Model;
 
 import de.mosmann.topics.BasePage;
+import de.mosmann.topics.basics.data.FormData;
 
 public class FormsPage extends BasePage {
 

@@ -5,8 +5,9 @@ import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.model.IModel;
 
-import de.mosmann.topics.basics.forms.models.property.PropertyModels;
-import de.mosmann.topics.basics.forms.models.property.PropertyModels.OnModel;
+import de.mosmann.common.models.property.PropertyModels;
+import de.mosmann.common.models.property.PropertyModels.OnModel;
+import de.mosmann.topics.basics.data.FormData;
 
 public class TypeSafeFormPanel extends AbstractSameMarkupFormPanel {
 

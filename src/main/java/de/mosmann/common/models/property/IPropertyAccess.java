@@ -1,4 +1,4 @@
-package de.mosmann.topics.basics.forms.models.property;
+package de.mosmann.common.models.property;
 
 import java.io.Serializable;
 

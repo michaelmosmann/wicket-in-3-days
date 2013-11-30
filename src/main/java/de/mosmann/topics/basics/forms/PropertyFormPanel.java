@@ -8,6 +8,8 @@ import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.PropertyModel;
 
+import de.mosmann.topics.basics.data.FormData;
+
 
 public class PropertyFormPanel extends AbstractSameMarkupFormPanel  {
 

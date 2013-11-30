@@ -7,6 +7,8 @@ import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.IModel;
 
+import de.mosmann.topics.basics.data.FormData;
+
 public class MagicFormPanel extends AbstractSameMarkupFormPanel {
 
 	public MagicFormPanel(String id, final IModel<FormData> model) {

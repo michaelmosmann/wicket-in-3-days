@@ -1,11 +1,8 @@
-package de.mosmann.topics.basics.forms;
+package de.mosmann.topics.basics.data;
 
 import java.io.Serializable;
 import java.util.Date;
 
-import de.mosmann.topics.basics.forms.models.Birthday;
-import de.mosmann.topics.basics.forms.models.Name;
-import de.mosmann.topics.basics.forms.models.Size;
 
 public class FormData implements Serializable {
 

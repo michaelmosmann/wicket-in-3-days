@@ -1,7 +1,6 @@
-package de.mosmann.topics.basics.forms.models;
+package de.mosmann.topics.basics.data;
 
-import de.mosmann.topics.basics.forms.FormData;
-import de.mosmann.topics.basics.forms.models.property.AbstractPropertyAccess;
+import de.mosmann.common.models.property.AbstractPropertyAccess;
 
 
 public class Size extends AbstractPropertyAccess<Integer, FormData> {
