@@ -1,8 +1,16 @@
 package de.mosmann;
 
+import java.text.DateFormat;
+import java.util.Date;
+import java.util.Locale;
+
+import org.apache.wicket.ConverterLocator;
+import org.apache.wicket.IConverterLocator;
 import org.apache.wicket.guice.GuiceComponentInjector;
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.protocol.http.WebApplication;
+import org.apache.wicket.util.convert.converter.DateConverter;
+import org.apache.wicket.util.time.TimeFrame;
 
 import com.google.inject.Injector;
 
@@ -37,5 +45,22 @@ public class WicketApplication extends WebApplication {
 	public void init() {
 		super.init();
 		getComponentInstantiationListeners().add(new GuiceComponentInjector(this, _injector));
+	}
+	
+	@Override
+	protected IConverterLocator newConverterLocator() {
+		ConverterLocator converterLocator = new ConverterLocator();
+		converterLocator.set(Date.class, new DateConverter() {
+			@Override
+			public DateFormat getDateFormat(Locale locale) {
+				if (locale == null)
+				{
+					locale = Locale.getDefault();
+				}
+				
+				return DateFormat.getDateTimeInstance(DateFormat.DEFAULT, DateFormat.DEFAULT, locale);
+			}
+		});
+		return converterLocator;
 	}
 }
