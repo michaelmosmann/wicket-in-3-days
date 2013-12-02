@@ -10,6 +10,7 @@ import de.mosmann.topics.basics.events.EventsPage;
 import de.mosmann.topics.basics.forms.FormsPage;
 import de.mosmann.topics.basics.markupmagic.MarkupMagicPage;
 import de.mosmann.topics.basics.models.ModelsPage;
+import de.mosmann.topics.basics.playground.PlaygroundPage;
 import de.mosmann.topics.basics.validations.ValidationsPage;
 
 
@@ -22,7 +23,11 @@ public enum Topic {
 	Events(EventsPage.class),
 	Models(ModelsPage.class),
 	
-	Persistence(ManageUsersPage.class);
+	//Behaviors
+	
+	Persistence(ManageUsersPage.class),
+	
+	Playground(PlaygroundPage.class);
 	
 	private final Class<? extends WebPage> _page;
 

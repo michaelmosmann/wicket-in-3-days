@@ -58,7 +58,9 @@ public class ComponentOverviewPage extends BasePage {
 		add(new ListView<String>("list",Model.ofList(Lists.newArrayList("A","ListView","with","some","stuff"))){
 			@Override
 			protected void populateItem(ListItem<String> item) {
-				item.add(new Label("item",item.getModel()));
+				Label label = new Label("item",item.getModel());
+				label.setOutputMarkupId(true);
+				item.add(label);
 			}
 		});
 		RepeatingView repeatingView = new RepeatingView("repeatView");
@@ -72,7 +74,14 @@ public class ComponentOverviewPage extends BasePage {
 		add(repeatingView);
 		
 		// grouping
-		add(new WebMarkupContainer("container"));
+		WebMarkupContainer container = new WebMarkupContainer("container");
+		container.add(new Label("foo","Foo"));
+		WebMarkupContainer innerContainer = new WebMarkupContainer("bar");
+		innerContainer.add(new Label("foo","FooBar"));
+		container.add(innerContainer);
+		add(container);
+		
+		
 		add(new SimpleBorder("border").add(new Label("inner","Whohooo")));
 		add(new SimplePanel("panel"));
 		add(new Fragment("fragment", "source", this));

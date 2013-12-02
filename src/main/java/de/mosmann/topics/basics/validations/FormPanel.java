@@ -2,8 +2,10 @@ package de.mosmann.topics.basics.validations;
 
 import java.util.Date;
 
+import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.attributes.CallbackParameter;
 import org.apache.wicket.ajax.form.AjaxFormValidatingBehavior;
+import org.apache.wicket.ajax.markup.html.AjaxLink;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.form.Button;
 import org.apache.wicket.markup.html.form.Form;
@@ -33,17 +35,13 @@ public class FormPanel extends Panel {
 		};
 		OnModel<FormData> onModel = PropertyModels.on(model);
 
-		TextField<String> nameField = new TextField<>("name", onModel.property(FormData.Name));
+		final TextField<String> nameField = new TextField<>("name", onModel.property(FormData.Name));
 		TextField<Integer> sizeField = new TextField<>("size", onModel.property(FormData.Size));
 		TextField<Date> birtdayField = new TextField<>("birthday", onModel.property(FormData.Birthday));
 		
 		nameField.add(StringValidator.minimumLength(2));
 		
-		FormComponentFeedbackBorder nameBorder = new FormComponentFeedbackBorder("nameBorder");
-		nameBorder.setOutputMarkupId(true);
-		nameBorder.add(nameField);
-		
-		form.add(nameBorder);
+		form.add(nameField);
 		form.add(sizeField);
 		form.add(birtdayField);
 		
@@ -57,7 +55,30 @@ public class FormPanel extends Panel {
 		});
 		add(form);
 		
+		add(new AjaxLink<Void>("lo") {
+			@Override
+			public void onClick(AjaxRequestTarget target) {
+				target.appendJavaScript("jQuery('#"+nameField.getMarkupId()+"').addClass('error')");
+			}
+		});
+		
 		AjaxFormValidatingBehavior.addToAllFormComponents(form, "onkeyup",Duration.milliseconds(500));
 		AjaxFormValidatingBehavior.addToAllFormComponents(form, "onblur");
+		
+		nameField.add(new AjaxFormValidatingBehavior(form, "onkeyup") {
+			@Override
+			protected void onError(AjaxRequestTarget target) {
+				super.onError(target);
+				if (nameField.hasErrorMessage()) {
+					target.appendJavaScript("jQuery('#"+nameField.getMarkupId()+"').addClass('error')");
+				}
+			}
+			
+			@Override
+			protected void onSubmit(AjaxRequestTarget target) {
+				super.onSubmit(target);
+				target.appendJavaScript("jQuery('#"+nameField.getMarkupId()+"').removeClass('error')");
+			}
+		});
 	}
 }

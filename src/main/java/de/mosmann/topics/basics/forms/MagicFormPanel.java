@@ -6,6 +6,7 @@ import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.IModel;
+import org.apache.wicket.validation.validator.StringValidator;
 
 import de.mosmann.topics.basics.data.FormData;
 
@@ -22,7 +23,11 @@ public class MagicFormPanel extends AbstractSameMarkupFormPanel {
 				info("submit done with " + getModelObject());
 			}
 		};
-		form.add(new TextField<>("name"));
+		TextField<Object> nameField = new TextField<>("name");
+		nameField.setRequired(true);
+		nameField.add(StringValidator.minimumLength(2));
+		nameField.add(new TripleAValidator());
+		form.add(nameField);
 		form.add(new TextField<>("size"));
 		form.add(new TextField<>("birthday"));
 		form.add(new Button("submit") {

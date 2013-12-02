@@ -19,7 +19,7 @@ public class ShowUserPanel extends Panel {
 
 	public ShowUserPanel(String id) {
 		super(id);
-
+		
 		IModel<User> model = new LoadableDetachableModel<User>() {
 
 			@Override

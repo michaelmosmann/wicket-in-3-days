@@ -12,11 +12,25 @@
 	<a wicket:id="external">External (worth it)</a><br>
 	
 	<h2>Repeater</h2>
-	<ul><li wicket:id="list"><span wicket:id="item"></span></li></ul>
-	<p><span wicket:id="repeatView">Content</span> </p>
+	<ul>
+		<li wicket:id="list">
+		<!-- LISTITEM -->
+			<span wicket:id="item"></span>
+		<!-- LISTITEM -->
+		</li>
+	</ul>
+	<p>
+		<span wicket:id="repeatView">Content</span>
+	</p>
 	
 	<h2>Grouping</h2>
-	<wicket:container wicket:id="container"><div style="border:1px dotted blue;">I am in a container</div></wicket:container>
+	<wicket:container wicket:id="container">
+		<div style="border:1px dotted blue;">I am in a container</div>
+		<span wicket:id="foo"></span>
+		<div wicket:id="bar" style="border:1px dotted blue;">
+			<span wicket:id="foo"></span>
+		</div>
+	</wicket:container>
 	<wicket:container wicket:id="border"><span wicket:id="inner"></span></wicket:container>
 	<wicket:container wicket:id="panel"></wicket:container>
 	<wicket:container wicket:id="fragment"></wicket:container>

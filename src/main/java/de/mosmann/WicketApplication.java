@@ -47,6 +47,7 @@ public class WicketApplication extends WebApplication {
 		getComponentInstantiationListeners().add(new GuiceComponentInjector(this, _injector));
 	}
 	
+	/*
 	@Override
 	protected IConverterLocator newConverterLocator() {
 		ConverterLocator converterLocator = new ConverterLocator();
@@ -63,4 +64,5 @@ public class WicketApplication extends WebApplication {
 		});
 		return converterLocator;
 	}
+	*/
 }
