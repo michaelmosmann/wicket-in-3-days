@@ -8,8 +8,8 @@ import com.google.common.collect.Lists;
 
 public class DummyService implements IDummyService {
 
-	static ConcurrentHashMap<Integer, Dummy> map=new ConcurrentHashMap<>();
-	static int counter=0;
+	ConcurrentHashMap<Integer, Dummy> map=new ConcurrentHashMap<>();
+	int counter=0;
 	
 	@Override
 	public Dummy newInstance() {

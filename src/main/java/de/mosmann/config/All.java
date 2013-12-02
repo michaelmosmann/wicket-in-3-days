@@ -14,8 +14,8 @@ public class All extends AbstractModule {
 		install(new Jpa());
 		install(new OpenSession());
 		install(new Application());
+		install(new DummyServiceModul());
 		
-		bind(IDummyService.class).to(DummyService.class);
 	}
 
 }

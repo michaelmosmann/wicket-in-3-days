@@ -38,7 +38,7 @@ public class NewDummyPanel extends Panel {
 
 		};
 		
-		form.add(new TextField<String>("name"));
+		form.add(new TextField<String>("name").setRequired(true));
 		form.add(new AjaxSubmitLink("submit") {
 			
 		});

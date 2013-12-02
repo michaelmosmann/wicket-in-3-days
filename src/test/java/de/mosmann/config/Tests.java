@@ -12,6 +12,7 @@ public class Tests extends AbstractModule {
 	protected void configure() {
 		install(new Jpa());
 		install(new OpenSession());
+		install(new DummyServiceModul());
 	}
 
 }

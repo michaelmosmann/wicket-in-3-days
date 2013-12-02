@@ -4,6 +4,7 @@ import java.text.DateFormat;
 import java.util.Date;
 import java.util.Locale;
 
+import org.apache.wicket.Application;
 import org.apache.wicket.ConverterLocator;
 import org.apache.wicket.IConverterLocator;
 import org.apache.wicket.guice.GuiceComponentInjector;
@@ -14,6 +15,9 @@ import org.apache.wicket.util.time.TimeFrame;
 
 import com.google.inject.Injector;
 
+import de.agilecoders.wicket.core.Bootstrap;
+import de.agilecoders.wicket.core.settings.BootstrapSettings;
+import de.mosmann.bootstrap.MyBootstrapPage;
 import de.mosmann.config.All;
 import de.mosmann.usermgmt.AllInOneDummyPage;
 import de.mosmann.usermgmt.UserMgmtPage;
@@ -37,7 +41,7 @@ public class WicketApplication extends WebApplication {
 	 */
 	@Override
 	public Class<? extends WebPage> getHomePage() {
-		return AllInOneDummyPage.class;
+		return MyBootstrapPage.class;
 	}
 
 	/**
@@ -47,6 +51,9 @@ public class WicketApplication extends WebApplication {
 	public void init() {
 		super.init();
 		getComponentInstantiationListeners().add(new GuiceComponentInjector(this, _injector));
+
+	// best place to do this is in Application#init()
+		Bootstrap.install(Application.get(), new BootstrapSettings());
 	}
 	
 	/*
