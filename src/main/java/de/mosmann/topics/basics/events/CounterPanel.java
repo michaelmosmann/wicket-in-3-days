@@ -36,6 +36,7 @@ public class CounterPanel extends Panel {
 			if (ajaxRequestTarget!=null) {
 				ajaxRequestTarget.add(_label);
 			}
+			
 		}
 	}
 }

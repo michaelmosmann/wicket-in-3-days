@@ -10,7 +10,12 @@ public class UserMgmtPage extends BasePage {
 	public UserMgmtPage() {
 		add(new FeedbackPanel("feedback"));
 		add(new FeedbackPanel("feedback2"));
-		add(new NewUserPanel("new"));
+		add(new NewDummyPanel("new") {
+			@Override
+			protected void newDummyCreated() {
+				setResponsePage(ShowDummiesPage.class);
+				}
+		});
 		
 	}
 }

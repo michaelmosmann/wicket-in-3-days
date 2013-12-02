@@ -1,5 +1,6 @@
 package de.mosmann.usermgmt;
 
+import org.apache.wicket.ajax.markup.html.form.AjaxSubmitLink;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.markup.html.panel.Panel;
@@ -10,12 +11,12 @@ import com.google.inject.Inject;
 import de.mosmann.persistence.service.Dummy;
 import de.mosmann.persistence.service.IDummyService;
 
-public class NewUserPanel extends Panel {
+public class NewDummyPanel extends Panel {
 
 	@Inject
 	IDummyService _dummyService;
 
-	public NewUserPanel(String id) {
+	public NewDummyPanel(String id) {
 		super(id);
 
 		final DummyByIdModel model = new DummyByIdModel();
@@ -30,13 +31,21 @@ public class NewUserPanel extends Panel {
 //				model.setDummyId(id);
 				
 				info("User " + dummy.getName() + " saved");
-				setResponsePage(ShowDummiesPage.class);
+//				setResponsePage(ShowDummiesPage.class);
+				
+				newDummyCreated();
 			}
+
 		};
 		
 		form.add(new TextField<String>("name"));
-		
+		form.add(new AjaxSubmitLink("submit") {
+			
+		});
 		add(form);
 	}
 
+	protected void newDummyCreated() {
+		
+	}
 }

@@ -15,6 +15,7 @@ import org.apache.wicket.util.time.TimeFrame;
 import com.google.inject.Injector;
 
 import de.mosmann.config.All;
+import de.mosmann.usermgmt.AllInOneDummyPage;
 import de.mosmann.usermgmt.UserMgmtPage;
 
 /**
@@ -36,7 +37,7 @@ public class WicketApplication extends WebApplication {
 	 */
 	@Override
 	public Class<? extends WebPage> getHomePage() {
-		return UserMgmtPage.class;
+		return AllInOneDummyPage.class;
 	}
 
 	/**
