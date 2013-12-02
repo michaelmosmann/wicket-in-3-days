@@ -1,6 +1,9 @@
 package de.mosmann.persistence.service;
 
+import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
+
+import com.google.common.collect.Lists;
 
 
 public class DummyService implements IDummyService {
@@ -27,6 +30,13 @@ public class DummyService implements IDummyService {
 	@Override
 	public Dummy byId(int id) {
 		return map.get(id);
+	}
+
+
+
+	@Override
+	public List<Dummy> asList() {
+		return Lists.newArrayList(map.values());
 	}
 
 }

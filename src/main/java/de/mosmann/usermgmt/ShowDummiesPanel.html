@@ -1,0 +1,21 @@
+<wicket:head>
+<style>
+	tr.odd {
+		background-color:#f0f0f0
+	}  
+</style>
+</wicket:head>
+<wicket:panel>
+	<table>
+		<tr>
+			<th>Id</th>
+			<th>Name</th>
+		</tr>
+		<tr wicket:id="list">
+			<td><span wicket:id="id"></span></td>
+			<td><span wicket:id="name"></span></td>
+		</tr>
+	</table>
+	<a wicket:id="up">+</a>
+	<a wicket:id="down">-</a>
+</wicket:panel>

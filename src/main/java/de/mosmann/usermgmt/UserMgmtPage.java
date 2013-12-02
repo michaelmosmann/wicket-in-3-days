@@ -11,5 +11,6 @@ public class UserMgmtPage extends BasePage {
 		add(new FeedbackPanel("feedback"));
 		add(new FeedbackPanel("feedback2"));
 		add(new NewUserPanel("new"));
+		
 	}
 }

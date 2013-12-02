@@ -1,6 +1,8 @@
 package de.mosmann.persistence.service;
 
-public class Dummy {
+import java.io.Serializable;
+
+public class Dummy implements Serializable {
 
 	Integer _id;
 	String _name;

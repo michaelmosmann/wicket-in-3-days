@@ -1,5 +1,7 @@
 package de.mosmann.persistence.service;
 
+import java.util.List;
+
 
 public interface IDummyService {
 
@@ -8,4 +10,6 @@ public interface IDummyService {
 	Dummy byId(int id);
 	
 	Integer save(Dummy dummy);
+	
+	List<Dummy> asList();
 }

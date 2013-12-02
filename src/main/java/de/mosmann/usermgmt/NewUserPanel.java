@@ -27,9 +27,10 @@ public class NewUserPanel extends Panel {
 				Dummy dummy = getModelObject();
 				
 				Integer id=_dummyService.save(dummy);
-				model.setDummyId(id);
+//				model.setDummyId(id);
 				
 				info("User " + dummy.getName() + " saved");
+				setResponsePage(ShowDummiesPage.class);
 			}
 		};
 		
