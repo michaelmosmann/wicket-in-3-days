@@ -1,0 +1,16 @@
+<wicket:head>
+	<style>
+		fieldset.error {
+			background-color: red;
+		}
+	</style>
+</wicket:head>
+<wicket:extend>
+	<div wicket:id="feedback"></div>
+	<form wicket:id="form">
+		<fieldset wicket:id="box">
+			<label>Name</label><input wicket:id="name">
+		</fieldset>
+		<input type="submit" value="Absenden">
+	</form>
+</wicket:extend>

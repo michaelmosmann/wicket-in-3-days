@@ -19,6 +19,7 @@ import de.agilecoders.wicket.core.Bootstrap;
 import de.agilecoders.wicket.core.settings.BootstrapSettings;
 import de.mosmann.bootstrap.MyBootstrapPage;
 import de.mosmann.config.All;
+import de.mosmann.topics.OverviewPage;
 import de.mosmann.usermgmt.AllInOneDummyPage;
 import de.mosmann.usermgmt.UserMgmtPage;
 
@@ -41,7 +42,7 @@ public class WicketApplication extends WebApplication {
 	 */
 	@Override
 	public Class<? extends WebPage> getHomePage() {
-		return MyBootstrapPage.class;
+		return OverviewPage.class;
 	}
 
 	/**

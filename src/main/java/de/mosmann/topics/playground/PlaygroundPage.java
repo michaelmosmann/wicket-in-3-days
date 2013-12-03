@@ -1,4 +1,4 @@
-package de.mosmann.topics.basics.playground;
+package de.mosmann.topics.playground;
 
 import org.apache.wicket.Component;
 import org.apache.wicket.ajax.AjaxEventBehavior;
