@@ -12,11 +12,11 @@ public final class KeyUpValidationBehavior extends AjaxFormComponentUpdatingBeha
 	/**
 	 * 
 	 */
-	private final WebMarkupContainer _box;
+	private final IAjaxUpdateListener _listener;
 
-	public KeyUpValidationBehavior(String event, WebMarkupContainer box) {
+	public KeyUpValidationBehavior(String event, IAjaxUpdateListener listener) {
 		super(event);
-		_box = box;
+		_listener = listener;
 	}
 	
 	@Override
@@ -30,7 +30,7 @@ public final class KeyUpValidationBehavior extends AjaxFormComponentUpdatingBeha
 
 	@Override
 	protected void onUpdate(AjaxRequestTarget target) {
-		target.add(_box);
+		_listener.onUpdate(target);
 
 		FormValidationMagic.markAsValidationTriggered(getComponent());
 	}
@@ -38,7 +38,7 @@ public final class KeyUpValidationBehavior extends AjaxFormComponentUpdatingBeha
 	@Override
 	protected void onError(AjaxRequestTarget target, RuntimeException e) {
 		super.onError(target, e);
-		target.add(_box);
+		_listener.onUpdate(target);
 		
 		FormValidationMagic.markAsValidationTriggered(getComponent());
 	}

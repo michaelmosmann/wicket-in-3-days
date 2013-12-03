@@ -1,6 +1,19 @@
+<wicket:head>
+<style>
+	fieldset {
+		border:0px;
+	}
+	fieldset.error {
+		background-color: #fff0f0;
+	}
+	fieldset.success {
+		background-color: #80ff80;
+	}
+</style>
+</wicket:head>
 <wicket:border>
 	<fieldset wicket:id="box" class="fooo">
-		<wicket:body/><span>(Info)</span>
+		<wicket:body/><span></span>
 		<div wicket:id="feedback"></div>
 	</fieldset>
 </wicket:border>

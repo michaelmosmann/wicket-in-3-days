@@ -3,9 +3,8 @@ package de.mosmann.config;
 import com.google.inject.AbstractModule;
 
 import de.mosmann.persistence.config.Jpa;
+import de.mosmann.persistence.config.Login;
 import de.mosmann.persistence.config.OpenSession;
-import de.mosmann.persistence.service.DummyService;
-import de.mosmann.persistence.service.IDummyService;
 
 public class All extends AbstractModule {
 
@@ -15,7 +14,7 @@ public class All extends AbstractModule {
 		install(new OpenSession());
 		install(new Application());
 		install(new DummyServiceModul());
-		
+		install(new Login());
 	}
 
 }

@@ -4,6 +4,7 @@ package de.mosmann.topics.forms;
 import org.apache.wicket.Component;
 import org.apache.wicket.MarkupContainer;
 import org.apache.wicket.WicketRuntimeException;
+import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.behavior.Behavior;
 import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.markup.html.form.FormComponent;
@@ -13,16 +14,24 @@ import com.google.common.base.Predicate;
 import com.google.common.collect.Collections2;
 import com.google.common.collect.ImmutableList;
 
-public class AddCssClassOnErrorBehavior extends Behavior {
+public class AddCssClassOnErrorBehavior extends Behavior implements IAjaxUpdateListener {
 
 	private ImmutableList<FormComponent> formComponents;
 	private String errorClass;
 	private String validClass;
 	boolean hadErrors=false;
 	
+	private Component component;
+	
 	public AddCssClassOnErrorBehavior(String errorClass, String validClass) {
 		this.errorClass = errorClass;
 		this.validClass = validClass;
+	}
+
+	@Override
+	public void bind(Component component) {
+		super.bind(component);
+		this.component=component;
 	}
 	
 	@Override
@@ -79,6 +88,15 @@ public class AddCssClassOnErrorBehavior extends Behavior {
 			this.formComponents=ImmutableList.copyOf(Forms.findFormComponents(container));
 		} else {
 			throw new WicketRuntimeException("You must bind this behavior to a MarkupContainer");
+		}
+	}
+
+	@Override
+	public void onUpdate(AjaxRequestTarget target) {
+		if (hasAnyErrors(formComponents)) {
+			target.appendJavaScript("jQuery('#"+component.getMarkupId()+ "').addClass('"+errorClass+"').removeClass('"+validClass+"')");
+		} else {
+			target.appendJavaScript("jQuery('#"+component.getMarkupId()+ "').addClass('"+validClass+"').removeClass('"+errorClass+"')");
 		}
 	}
 }
