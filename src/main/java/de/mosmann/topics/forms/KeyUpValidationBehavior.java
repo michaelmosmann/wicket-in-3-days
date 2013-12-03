@@ -5,7 +5,6 @@ import org.apache.wicket.ajax.attributes.AjaxRequestAttributes;
 import org.apache.wicket.ajax.attributes.ThrottlingSettings;
 import org.apache.wicket.ajax.form.AjaxFormComponentUpdatingBehavior;
 import org.apache.wicket.markup.html.WebMarkupContainer;
-import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.util.time.Duration;
 
 public final class KeyUpValidationBehavior extends AjaxFormComponentUpdatingBehavior {
@@ -15,7 +14,7 @@ public final class KeyUpValidationBehavior extends AjaxFormComponentUpdatingBeha
 	 */
 	private final WebMarkupContainer _box;
 
-	public KeyUpValidationBehavior(Form<?> form, String event, WebMarkupContainer box) {
+	public KeyUpValidationBehavior(String event, WebMarkupContainer box) {
 		super(event);
 		_box = box;
 	}

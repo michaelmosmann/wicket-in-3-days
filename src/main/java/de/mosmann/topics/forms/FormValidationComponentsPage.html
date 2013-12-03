@@ -11,19 +11,15 @@
 <wicket:extend>
 	<div wicket:id="feedback"></div>
 	<form wicket:id="form">
-		<fieldset wicket:id="box">
+		<wicket:container wicket:id="box">
 			<label>Name</label><input wicket:id="name">
-		</fieldset>
-		<fieldset wicket:id="box2">
-			<label>Vorname</label><input wicket:id="vorname">
-		</fieldset>
-		<!-- before border -->
-		<wicket:container wicket:id="box3">
-		<!-- border body start -->
-			<label>Alter</label><input wicket:id="alter">
-		<!-- border body end -->
 		</wicket:container>
-		<!-- after border -->
+		<wicket:container wicket:id="box2">
+			<label>Vorname</label><input wicket:id="vorname">
+		</wicket:container>
+		<wicket:container wicket:id="box3">
+			<label>Alter</label><input wicket:id="alter">
+		</wicket:container>
 		<input type="submit" value="Absenden">
 	</form>
 </wicket:extend>

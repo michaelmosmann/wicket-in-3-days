@@ -24,26 +24,21 @@ public class FormValidationComponentsPage extends BasePage {
 
 		Form<Void> form = new Form<Void>("form");
 
-		final WebMarkupContainer box = new WebMarkupContainer("box");
-		box.setOutputMarkupId(true);
-		box.add(new AddCssClassOnErrorBehavior("error", "success"));
+		FormValidationBorder box=new FormValidationBorder("box");
 
 		final TextField<String> textField = new TextField<>("name", Model.of(""));
 		textField.setRequired(true);
 		textField.add(StringValidator.minimumLength(4));
 
-		textField.add(new KeyUpValidationBehavior(form, "onkeyup", box));
-
-		
-		final WebMarkupContainer box2 = new WebMarkupContainer("box2");
-		box2.setOutputMarkupId(true);
-		box2.add(new AddCssClassOnErrorBehavior("error", "success"));
+		box.add(textField);
+	
+		FormValidationBorder box2=new FormValidationBorder("box2");
 
 		final TextField<String> textField2 = new TextField<>("vorname", Model.of(""));
 		textField2.setRequired(true);
 		textField2.add(StringValidator.minimumLength(4));
-
-		textField2.add(new KeyUpValidationBehavior(form, "onkeyup", box2));
+		
+		box2.add(textField2);
 
 		FormValidationBorder box3=new FormValidationBorder("box3");
 
@@ -56,8 +51,6 @@ public class FormValidationComponentsPage extends BasePage {
 		form.add(box);
 		form.add(box2);
 		form.add(box3);
-		box.add(textField);
-		box2.add(textField2);
 		add(form);
 	}
 }
