@@ -1,7 +1,10 @@
 <wicket:head>
 	<style>
 		fieldset.error {
-			background-color: red;
+			background-color: #fff0f0;
+		}
+		fieldset.success {
+			background-color: #80ff80;
 		}
 	</style>
 </wicket:head>
@@ -11,6 +14,16 @@
 		<fieldset wicket:id="box">
 			<label>Name</label><input wicket:id="name">
 		</fieldset>
+		<fieldset wicket:id="box2">
+			<label>Vorname</label><input wicket:id="vorname">
+		</fieldset>
+		<!-- before border -->
+		<wicket:container wicket:id="box3">
+		<!-- border body start -->
+			<label>Alter</label><input wicket:id="alter">
+		<!-- border body end -->
+		</wicket:container>
+		<!-- after border -->
 		<input type="submit" value="Absenden">
 	</form>
 </wicket:extend>

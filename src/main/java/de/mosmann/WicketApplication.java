@@ -54,7 +54,8 @@ public class WicketApplication extends WebApplication {
 		getComponentInstantiationListeners().add(new GuiceComponentInjector(this, _injector));
 
 	// best place to do this is in Application#init()
-		Bootstrap.install(Application.get(), new BootstrapSettings());
+	//	Bootstrap.install(Application.get(), new BootstrapSettings());
+		getDebugSettings().setOutputMarkupContainerClassName(true);
 	}
 	
 	/*
