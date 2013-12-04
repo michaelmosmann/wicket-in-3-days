@@ -5,7 +5,7 @@ import com.google.common.collect.ImmutableList;
 public enum Day {
 	One(Topic.MarkupMagic,Topic.Components,Topic.Forms,Topic.Validation,Topic.Events,Topic.Models),
 	Two(Topic.FormValidationComponents),
-	Three,
+	Three(Topic.Converter),
 	ToDo(Topic.Persistence),
 	Any(Topic.Playground);
 

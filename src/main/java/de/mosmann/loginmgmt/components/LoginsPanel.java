@@ -14,6 +14,7 @@ import org.apache.wicket.model.Model;
 import de.mosmann.Ajax;
 import de.mosmann.loginmgmt.events.AbstractEditLoginDataEvents;
 import de.mosmann.loginmgmt.events.EditLogin;
+import de.mosmann.loginmgmt.login.Secure;
 import de.mosmann.persistence.service.Login;
 
 public class LoginsPanel extends Panel {
@@ -34,7 +35,7 @@ public class LoginsPanel extends Panel {
 				item.add(new Label("id", login.getId()));
 				item.add(new Label("name", login.getName()));
 				item.add(new Label("email", login.getEmail()));
-				item.add(new Label("passwd", login.getPasswd()));
+				item.add(new PasswordLabel("passwd", login.getPasswd()));
 				item.add(new AjaxLink<Integer>("edit", Model.of(login.getId())) {
 					@Override
 					public void onClick(AjaxRequestTarget target) {
@@ -61,4 +62,13 @@ public class LoginsPanel extends Panel {
 			Ajax.addComponentIfAjax(this);
 		}
 	}
+
+	@Secure
+	public static final class PasswordLabel extends Label {
+
+		public PasswordLabel(String id, String label) {
+			super(id, label);
+		}
+	}
+
 }

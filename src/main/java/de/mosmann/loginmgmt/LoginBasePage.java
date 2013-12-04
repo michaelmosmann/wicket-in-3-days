@@ -31,8 +31,9 @@ public abstract class LoginBasePage extends WebPage {
 
 	public LoginBasePage() {
 		add(new LogoutPanel("logout"));
-		add(new NavigationPanel("nav", new BookmarkableNavEntry<>(LoginPage.class, "Login"), new BookmarkableNavEntry<>(
-				LoginManagementPage.class, "Start"), new BookmarkableNavEntry<>(HiddenPage.class, "Hidden")));
+		add(new NavigationPanel("nav", new BookmarkableNavEntry<>(LoginPage.class, "Login"),
+				new BookmarkableNavEntry<>(LoginManagementPage.class, "Start"), 
+				new BookmarkableNavEntry<>(HiddenPage.class, "Hidden")));
 	}
 
 	@Override

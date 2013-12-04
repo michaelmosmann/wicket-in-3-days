@@ -15,6 +15,7 @@ import org.apache.wicket.validation.validator.StringValidator;
 
 
 import de.mosmann.topics.BasePage;
+import de.mosmann.topics.converter.Money;
 
 public class FormValidationComponentsPage extends BasePage {
 
@@ -22,7 +23,16 @@ public class FormValidationComponentsPage extends BasePage {
 
 		add(new FeedbackPanel("feedback").setOutputMarkupId(true));
 
-		Form<Void> form = new Form<Void>("form");
+		final Model<Money> moneyModel = new Model<Money>();
+		
+		Form<Void> form = new Form<Void>("form") {
+			@Override
+			protected void onSubmit() {
+				super.onSubmit();
+				
+				info("Money: "+moneyModel.getObject());
+			}
+		};
 
 		FormValidationBorder box=new FormValidationBorder("box");
 
@@ -48,9 +58,17 @@ public class FormValidationComponentsPage extends BasePage {
 		
 		box3.add(textField3);
 
+		FormValidationBorder box4=new FormValidationBorder("box4");
+
+		final TextField<Money> textField4 = new TextField<>("money", moneyModel,Money.class);
+		textField4.setRequired(true);
+		
+		box4.add(textField4);
+
 		form.add(box);
 		form.add(box2);
 		form.add(box3);
+		form.add(box4);
 		add(form);
 	}
 }
