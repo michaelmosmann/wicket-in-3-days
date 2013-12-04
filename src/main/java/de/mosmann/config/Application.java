@@ -18,7 +18,8 @@ public class Application extends ServletModule {
 	 // avoids "Error initializing WicketFilter - you have no <filter-mapping> element..."   
 	 // IllegalArgumentException  
 	 Map<String, String> params = new HashMap<String, String>();    
-	 params.put(WicketFilter.FILTER_MAPPING_PARAM, "/*");  
+	 params.put(WicketFilter.FILTER_MAPPING_PARAM, "/*");
+	 params.put("configuration", "deployment");
 	   
 	 filter("/*").through(WicketGuiceFilter.class, params);  
 	}  
