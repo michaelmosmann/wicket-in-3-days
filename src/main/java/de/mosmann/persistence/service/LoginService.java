@@ -1,10 +1,14 @@
 package de.mosmann.persistence.service;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import com.google.common.base.Function;
+import com.google.common.base.Optional;
+import com.google.common.base.Predicate;
+import com.google.common.collect.Collections2;
 import com.google.common.collect.Lists;
 
 import de.mosmann.loginmgmt.events.NewLogin;
@@ -32,6 +36,21 @@ public class LoginService implements ILoginService {
 				return new Login(input);
 			}
 		});
+	}
+	
+	@Override
+	public Optional<Login> getByName(final String name) {
+		// HACK
+		Collection<Login> matching = Collections2.filter(map.values(), new Predicate<Login>() {
+			@Override
+			public boolean apply(Login input) {
+				return name.equals(input.getName());
+			}
+		});
+		if (matching.size()==1) {
+			return Optional.of(new Login(matching.iterator().next()));
+		}
+		return Optional.absent();
 	}
 	
 	@Override

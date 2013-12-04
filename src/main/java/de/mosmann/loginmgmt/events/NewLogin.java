@@ -1,6 +1,6 @@
 package de.mosmann.loginmgmt.events;
 
-public class NewLogin extends AbstractLoginEvents {
+public class NewLogin extends AbstractEditLoginDataEvents {
 
 	private final String _name;
 	private final String _email;

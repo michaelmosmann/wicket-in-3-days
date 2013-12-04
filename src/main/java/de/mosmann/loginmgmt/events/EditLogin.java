@@ -1,7 +1,7 @@
 package de.mosmann.loginmgmt.events;
 
 
-public class EditLogin extends AbstractLoginEvents {
+public class EditLogin extends AbstractEditLoginDataEvents {
 
 	private final int _loginId;
 

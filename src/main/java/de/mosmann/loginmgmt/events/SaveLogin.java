@@ -2,7 +2,7 @@ package de.mosmann.loginmgmt.events;
 
 import de.mosmann.persistence.service.Login;
 
-public class SaveLogin extends AbstractLoginEvents {
+public class SaveLogin extends AbstractEditLoginDataEvents {
 
 	private final Login _login;
 

@@ -12,7 +12,7 @@ import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.Model;
 
 import de.mosmann.Ajax;
-import de.mosmann.loginmgmt.events.AbstractLoginEvents;
+import de.mosmann.loginmgmt.events.AbstractEditLoginDataEvents;
 import de.mosmann.loginmgmt.events.EditLogin;
 import de.mosmann.persistence.service.Login;
 
@@ -57,7 +57,7 @@ public class LoginsPanel extends Panel {
 	public void onEvent(IEvent<?> event) {
 		super.onEvent(event);
 
-		if (event.getPayload() instanceof AbstractLoginEvents) {
+		if (event.getPayload() instanceof AbstractEditLoginDataEvents) {
 			Ajax.addComponentIfAjax(this);
 		}
 	}

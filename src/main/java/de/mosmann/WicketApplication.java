@@ -20,6 +20,8 @@ import de.agilecoders.wicket.core.settings.BootstrapSettings;
 import de.mosmann.bootstrap.MyBootstrapPage;
 import de.mosmann.config.All;
 import de.mosmann.loginmgmt.LoginManagementPage;
+import de.mosmann.loginmgmt.LoginPage;
+import de.mosmann.loginmgmt.login.AnnotationAuthStrategy;
 import de.mosmann.topics.OverviewPage;
 import de.mosmann.usermgmt.AllInOneDummyPage;
 import de.mosmann.usermgmt.UserMgmtPage;
@@ -57,6 +59,10 @@ public class WicketApplication extends WebApplication {
 	// best place to do this is in Application#init()
 	//	Bootstrap.install(Application.get(), new BootstrapSettings());
 		getDebugSettings().setOutputMarkupContainerClassName(true);
+		
+		AnnotationAuthStrategy authStrategy = new AnnotationAuthStrategy(LoginPage.class);
+		getSecuritySettings().setAuthorizationStrategy(authStrategy);
+		getSecuritySettings().setUnauthorizedComponentInstantiationListener(authStrategy);
 	}
 	
 	/*
