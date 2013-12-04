@@ -8,61 +8,86 @@ import org.apache.wicket.behavior.Behavior;
 import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.basic.Label;
+import org.apache.wicket.markup.html.link.BookmarkablePageLink;
 import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.model.Model;
+import org.apache.wicket.request.cycle.RequestCycle;
+import org.apache.wicket.request.mapper.parameter.PageParameters;
 
 import de.mosmann.topics.BasePage;
+import de.mosmann.topics.playground.PlaygroundPage.Data;
 
 
 public class PlaygroundPage extends BasePage {
 
-	
 	public PlaygroundPage() {
-		final Model<String> model = Model.of("border: 1px solid red");
-		final Model<Integer> counter = Model.of(0);
+		final Data d=new Data();
+		d.name="Klaus";
+		d.binData=new byte[1213131];
 		
-		final MyContainer comp = new MyContainer("container");
-		comp.add(new AttributeAppender("style", model));
-		comp.add(new AjaxEventBehavior("onclick") {
-			@Override
-			protected void onEvent(AjaxRequestTarget target) {
-				model.setObject("border: 2px");
-				comp._counter++;
-				counter.setObject(comp._counter);
-				target.add(comp);
-			}
-		});
-		comp.add(new Behavior() {
-			@Override
-			public void onComponentTag(Component component, ComponentTag tag) {
-				tag.getAttributes().put("foo", "bar");
-			}
-		});
-		comp.add(new Label("counter",counter));
-		add(comp);
+		add(new MyLink("link", d));
 		
-		add(new Link<Void>("link") {
-			@Override
-			public void onClick() {
-				model.setObject("border: 1px solid red");
-			}
-		});
+		PlaygroundPage.jumpForShowBla(7, "klaus").asLink("link");
 
-		add(new Link<Void>("link2") {
-			@Override
-			public void onClick() {
-				model.setObject("border: 1px solid blue");
-			}
-		});
 	}
 	
-	static class MyContainer extends WebMarkupContainer {
+	public static final class MyLink extends Link<Void> {
 
-		int _counter=0;
-		
-		public MyContainer(String id) {
+		private final Data _d;
+
+		public MyLink(String id, Data d) {
 			super(id);
+			_d = d;
+		}
+
+		@Override
+		public void onClick() {
+			info("Wer hat geklickt: "+_d.name);
+			
+			PlaygroundPage.jumpForShowBla(7, "klaus").jump();
 		}
 		
+	}
+	
+	
+	public static NavLink jumpForShowBla(int index, String username) {
+		return new NavLink(PlaygroundPage.class, new PageParameters().add("index", index).add("q", username));
+	}
+	
+	static class NavLink {
+
+		private final Class<PlaygroundPage> _type;
+		private final PageParameters _parameters;
+
+		public NavLink(Class<PlaygroundPage> type, PageParameters parameters) {
+			_type = type;
+			_parameters = parameters;
+		}
+
+		public BookmarkablePageLink<PlaygroundPage> asLink(String id) {
+			return new BookmarkablePageLink<>(id, _type, _parameters);
+			
+		}
+
+		public void jump() {
+			RequestCycle.get().setResponsePage(_type,_parameters);
+		}
+		
+	}
+
+	class Factory {
+		public Link newLink(String id) {
+			return new Link<Void>(id) {
+				@Override
+				public void onClick() {
+					info("holööa");
+				}
+			};
+		}
+	}
+	
+	static class Data {
+		String name;
+		byte[] binData;
 	}
 }

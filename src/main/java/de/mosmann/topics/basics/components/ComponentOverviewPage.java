@@ -1,11 +1,17 @@
 package de.mosmann.topics.basics.components;
 
+import java.awt.Color;
+import java.awt.Graphics2D;
+
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.AjaxLink;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.basic.MultiLineLabel;
+import org.apache.wicket.markup.html.image.Image;
+import org.apache.wicket.markup.html.image.resource.BufferedDynamicImageResource;
+import org.apache.wicket.markup.html.image.resource.RenderedDynamicImageResource;
 import org.apache.wicket.markup.html.link.BookmarkablePageLink;
 import org.apache.wicket.markup.html.link.ExternalLink;
 import org.apache.wicket.markup.html.link.Link;
@@ -16,6 +22,8 @@ import org.apache.wicket.markup.html.panel.Fragment;
 import org.apache.wicket.markup.repeater.RepeatingView;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
+import org.apache.wicket.request.resource.DynamicImageResource;
+import org.apache.wicket.request.resource.IResource.Attributes;
 
 import com.google.common.collect.Lists;
 
@@ -85,5 +93,16 @@ public class ComponentOverviewPage extends BasePage {
 		add(new SimpleBorder("border").add(new Label("inner","Whohooo")));
 		add(new SimplePanel("panel"));
 		add(new Fragment("fragment", "source", this));
+		
+		add(new Image("img", new RenderedDynamicImageResource(100,100/*, "image/jpeg"*/) {
+
+			@Override
+			protected boolean render(Graphics2D graphics, Attributes attributes) {
+				graphics.setColor(new Color(255,0,0));
+				graphics.setBackground(new Color(255,128,0));
+				graphics.clearRect(0, 0, 10, 10);
+				return true;
+			}
+		}));
 	}
 }
