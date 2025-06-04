@@ -1,6 +1,7 @@
 package de.mosmann.topics.basics.components;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 
@@ -15,29 +16,42 @@ import de.mosmann.topics.BasePage;
 
 public class AutoCompleteTextFieldPage extends BasePage {
 
-    private static final List<String> COUNTRIES = new ArrayList<>();
-    
-    static {
-        COUNTRIES.add("Germany");
-        COUNTRIES.add("Austria");
-        COUNTRIES.add("Switzerland");
-        COUNTRIES.add("United States");
-        COUNTRIES.add("United Kingdom");
-        COUNTRIES.add("France");
-        COUNTRIES.add("Italy");
-        COUNTRIES.add("Spain");
-        COUNTRIES.add("Netherlands");
-        COUNTRIES.add("Belgium");
-        COUNTRIES.add("Sweden");
-        COUNTRIES.add("Norway");
-        COUNTRIES.add("Denmark");
-        COUNTRIES.add("Finland");
-        COUNTRIES.add("Poland");
-        COUNTRIES.add("Czech Republic");
-        COUNTRIES.add("Hungary");
-        COUNTRIES.add("Portugal");
-        COUNTRIES.add("Greece");
-        COUNTRIES.add("Turkey");
+    public enum Country {
+        GERMANY("Germany"),
+        AUSTRIA("Austria"),
+        SWITZERLAND("Switzerland"),
+        UNITED_STATES("United States"),
+        UNITED_KINGDOM("United Kingdom"),
+        FRANCE("France"),
+        ITALY("Italy"),
+        SPAIN("Spain"),
+        NETHERLANDS("Netherlands"),
+        BELGIUM("Belgium"),
+        SWEDEN("Sweden"),
+        NORWAY("Norway"),
+        DENMARK("Denmark"),
+        FINLAND("Finland"),
+        POLAND("Poland"),
+        CZECH_REPUBLIC("Czech Republic"),
+        HUNGARY("Hungary"),
+        PORTUGAL("Portugal"),
+        GREECE("Greece"),
+        TURKEY("Turkey");
+        
+        private final String displayName;
+        
+        Country(String displayName) {
+            this.displayName = displayName;
+        }
+        
+        public String getDisplayName() {
+            return displayName;
+        }
+        
+        @Override
+        public String toString() {
+            return displayName;
+        }
     }
     
     public AutoCompleteTextFieldPage() {
@@ -48,18 +62,18 @@ public class AutoCompleteTextFieldPage extends BasePage {
         Form<Void> form = new Form<Void>("form");
         add(form);
         
-        final Model<String> selectedCountry = Model.of("");
+        final Model<Country> selectedCountry = Model.of();
         
-        AutoCompleteTextField<String> countryField = new AutoCompleteTextField<String>("country", selectedCountry) {
+        AutoCompleteTextField<Country> countryField = new AutoCompleteTextField<Country>("country", selectedCountry) {
             @Override
-            protected Iterator<String> getChoices(String input) {
+            protected Iterator<Country> getChoices(String input) {
                 if (Strings.isEmpty(input)) {
-                    return COUNTRIES.iterator();
+                    return Arrays.asList(Country.values()).iterator();
                 }
                 
-                List<String> matches = new ArrayList<>();
-                for (String country : COUNTRIES) {
-                    if (country.toLowerCase().startsWith(input.toLowerCase())) {
+                List<Country> matches = new ArrayList<>();
+                for (Country country : Country.values()) {
+                    if (country.getDisplayName().toLowerCase().startsWith(input.toLowerCase())) {
                         matches.add(country);
                     }
                 }
@@ -72,9 +86,9 @@ public class AutoCompleteTextFieldPage extends BasePage {
         form.add(new SubmitLink("submit") {
             @Override
             public void onSubmit() {
-                String country = selectedCountry.getObject();
-                if (!Strings.isEmpty(country)) {
-                    info("Selected country: " + country);
+                Country country = selectedCountry.getObject();
+                if (country != null) {
+                    info("Selected country: " + country.getDisplayName() + " (" + country.name() + ")");
                 } else {
                     warn("Please select a country");
                 }
