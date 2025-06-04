@@ -5,6 +5,8 @@ import de.mosmann.loginmgmt.HiddenPage;
 import de.mosmann.loginmgmt.LoginPage;
 import de.mosmann.loginmgmt.login.AnnotationAuthStrategy;
 import de.mosmann.topics.OverviewPage;
+import de.mosmann.topics.basics.components.Country;
+import de.mosmann.topics.basics.components.CountryConverter;
 import de.mosmann.topics.converter.Money;
 import de.mosmann.topics.converter.MoneyConverter;
 import de.mosmann.topics.converter.MyShortDateConverter;
@@ -87,6 +89,7 @@ public class WicketApplication extends WebApplication {
 		*/
 		converterLocator.set(ShortDate.class, new MyShortDateConverter());
 		converterLocator.set(Money.class, new MoneyConverter());
+		converterLocator.set(Country.class, new CountryConverter());
 		return converterLocator;
 	}
 }
