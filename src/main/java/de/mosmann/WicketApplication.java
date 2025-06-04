@@ -11,6 +11,8 @@ import de.mosmann.topics.converter.MyShortDateConverter;
 import de.mosmann.topics.converter.ShortDate;
 import org.apache.wicket.ConverterLocator;
 import org.apache.wicket.IConverterLocator;
+import org.apache.wicket.csp.CSPDirective;
+import org.apache.wicket.csp.CSPDirectiveSrcValue;
 import org.apache.wicket.guice.GuiceComponentInjector;
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.protocol.http.WebApplication;
@@ -44,6 +46,15 @@ public class WicketApplication extends WebApplication {
 	@Override
 	public void init() {
 		super.init();
+
+		// needed for the styling used by the quickstart
+		getCspSettings().blocking()
+				.disabled()
+//			.add(CSPDirective.STYLE_SRC, CSPDirectiveSrcValue.SELF)
+//			.add(CSPDirective.STYLE_SRC, "https://fonts.googleapis.com/css")
+//			.add(CSPDirective.FONT_SRC, "https://fonts.gstatic.com")
+		;
+
 		getComponentInstantiationListeners().add(new GuiceComponentInjector(this, _injector));
 
 	// best place to do this is in Application#init()
