@@ -2,6 +2,7 @@ package de.mosmann.topics;
 
 import java.util.Objects;
 
+import de.mosmann.topics.basics.components.AutoCompleteTextFieldPage;
 import org.apache.wicket.markup.html.WebPage;
 
 import de.mosmann.topics.advanced.persistence.ManageUsersPage;
@@ -20,6 +21,7 @@ import de.mosmann.topics.playground.PlaygroundPage;
 public enum Topic {
 
 	Components(ComponentOverviewPage.class),
+	AutoComplete(AutoCompleteTextFieldPage.class),
 	MarkupMagic(MarkupMagicPage.class),
 	Forms(FormsPage.class),
 	Validation(ValidationsPage.class),

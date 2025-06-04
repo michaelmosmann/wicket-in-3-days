@@ -1,0 +1,21 @@
+<wicket:extend>
+    <div wicket:id="feedback"></div>
+    
+    <h2>AutoCompleteTextField Example</h2>
+    
+    <p>Start typing a country name to see the autocomplete suggestions:</p>
+    
+    <form wicket:id="form">
+        <div class="form-group">
+            <label for="country">Country:</label>
+            <input wicket:id="country" type="text" class="form-control" id="country" placeholder="Start typing a country name..." />
+        </div>
+        
+        <div class="form-group">
+            <input wicket:id="submit" type="submit" class="btn btn-primary" value="Submit" />
+        </div>
+    </form>
+    
+    <h3>Available Countries:</h3>
+    <p>Germany, Austria, Switzerland, United States, United Kingdom, France, Italy, Spain, Netherlands, Belgium, Sweden, Norway, Denmark, Finland, Poland, Czech Republic, Hungary, Portugal, Greece, Turkey</p>
+</wicket:extend>
