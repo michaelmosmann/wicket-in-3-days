@@ -48,11 +48,11 @@ public class WicketApplication extends WebApplication {
 		super.init();
 
 		// needed for the styling used by the quickstart
-		getCspSettings().blocking()
-				.disabled()
-//			.add(CSPDirective.STYLE_SRC, CSPDirectiveSrcValue.SELF)
-//			.add(CSPDirective.STYLE_SRC, "https://fonts.googleapis.com/css")
-//			.add(CSPDirective.FONT_SRC, "https://fonts.gstatic.com")
+		getCspSettings().blocking().disabled()
+			.add(CSPDirective.STYLE_SRC, CSPDirectiveSrcValue.SELF)
+			.add(CSPDirective.STYLE_SRC, CSPDirectiveSrcValue.UNSAFE_INLINE)
+			.add(CSPDirective.STYLE_SRC, "https://fonts.googleapis.com/css")
+			.add(CSPDirective.FONT_SRC, "https://fonts.gstatic.com")
 		;
 
 		getComponentInstantiationListeners().add(new GuiceComponentInjector(this, _injector));
