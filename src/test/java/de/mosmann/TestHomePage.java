@@ -1,13 +1,10 @@
 package de.mosmann;
 
-import org.apache.wicket.util.tester.WicketTester;
-import org.junit.Before;
-import org.junit.Test;
-
 import com.google.inject.Guice;
 import com.google.inject.Injector;
-
 import de.mosmann.config.Tests;
+import org.apache.wicket.util.tester.WicketTester;
+import org.junit.jupiter.api.BeforeEach;
 
 /**
  * Simple test using the WicketTester
@@ -16,14 +13,14 @@ public class TestHomePage
 {
 	private WicketTester tester;
 
-	@Before
+	@BeforeEach
 	public void setUp()
 	{
 		Injector injector = Guice.createInjector(new Tests());
 		tester = new WicketTester(new WicketApplication(injector));
 	}
 
-	@Test
+	@org.junit.jupiter.api.Test
 	public void homepageRendersSuccessfully()
 	{
 		//start and render the test page

@@ -1,26 +1,29 @@
 package de.mosmann;
 
-import org.apache.wicket.util.time.Duration;
-import org.eclipse.jetty.server.Server;
-import org.eclipse.jetty.server.bio.SocketConnector;
-import org.eclipse.jetty.server.ssl.SslSocketConnector;
+import org.eclipse.jetty.http.HttpVersion;
+import org.eclipse.jetty.server.*;
 import org.eclipse.jetty.util.resource.Resource;
 import org.eclipse.jetty.util.ssl.SslContextFactory;
 import org.eclipse.jetty.webapp.WebAppContext;
 
 public class Start {
     public static void main(String[] args) throws Exception {
-        int timeout = (int) Duration.ONE_HOUR.getMilliseconds();
+        int timeout = (int) java.time.Duration.ofHours(1).toMillis();
 
         Server server = new Server();
-        SocketConnector connector = new SocketConnector();
+        
+        // HTTP Configuration
+        HttpConfiguration httpConfig = new HttpConfiguration();
+        httpConfig.setSecureScheme("https");
+        httpConfig.setSecurePort(8443);
+        
+        // HTTP connector
+        ServerConnector httpConnector = new ServerConnector(server, new HttpConnectionFactory(httpConfig));
+        httpConnector.setPort(8080);
+        httpConnector.setIdleTimeout(timeout);
+        server.addConnector(httpConnector);
 
-        // Set some timeout options to make debugging easier.
-        connector.setMaxIdleTime(timeout);
-        connector.setSoLingerTime(-1);
-        connector.setPort(8080);
-        server.addConnector(connector);
-
+        // HTTPS Configuration
         Resource keystore = Resource.newClassPathResource("/keystore");
         if (keystore != null && keystore.exists()) {
             // if a keystore for a SSL certificate is available, start a SSL
@@ -30,18 +33,21 @@ public class Start {
             // use this certificate anywhere important as the passwords are
             // available in the source.
 
-            connector.setConfidentialPort(8443);
+            HttpConfiguration httpsConfig = new HttpConfiguration(httpConfig);
+            httpsConfig.addCustomizer(new SecureRequestCustomizer());
 
-            SslContextFactory factory = new SslContextFactory();
-            factory.setKeyStoreResource(keystore);
-            factory.setKeyStorePassword("wicket");
-            factory.setTrustStoreResource(keystore);
-            factory.setKeyManagerPassword("wicket");
-            SslSocketConnector sslConnector = new SslSocketConnector(factory);
-            sslConnector.setMaxIdleTime(timeout);
-            sslConnector.setPort(8443);
-            sslConnector.setAcceptors(4);
-            server.addConnector(sslConnector);
+            SslContextFactory.Server sslContextFactory = new SslContextFactory.Server();
+            sslContextFactory.setKeyStoreResource(keystore);
+            sslContextFactory.setKeyStorePassword("wicket");
+            sslContextFactory.setKeyManagerPassword("wicket");
+            sslContextFactory.setTrustStoreResource(keystore);
+
+            ServerConnector httpsConnector = new ServerConnector(server,
+                new SslConnectionFactory(sslContextFactory, HttpVersion.HTTP_1_1.asString()),
+                new HttpConnectionFactory(httpsConfig));
+            httpsConnector.setPort(8443);
+            httpsConnector.setIdleTimeout(timeout);
+            server.addConnector(httpsConnector);
 
             System.out.println("SSL access to the quickstart has been enabled on port 8443");
             System.out.println("You can access the application using SSL on https://localhost:8443");

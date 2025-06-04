@@ -1,21 +1,13 @@
 package de.mosmann.topics.forms;
 
-import java.util.Collection;
-
-import javax.annotation.concurrent.Immutable;
-
-import org.apache.wicket.feedback.IFeedback;
-import org.apache.wicket.markup.html.WebMarkupContainer;
+import de.mosmann.topics.BasePage;
+import de.mosmann.topics.converter.Money;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.markup.html.panel.FeedbackPanel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.validation.validator.RangeValidator;
 import org.apache.wicket.validation.validator.StringValidator;
-
-
-import de.mosmann.topics.BasePage;
-import de.mosmann.topics.converter.Money;
 
 public class FormValidationComponentsPage extends BasePage {
 

@@ -4,8 +4,6 @@ import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.attributes.AjaxRequestAttributes;
 import org.apache.wicket.ajax.attributes.ThrottlingSettings;
 import org.apache.wicket.ajax.form.AjaxFormComponentUpdatingBehavior;
-import org.apache.wicket.markup.html.WebMarkupContainer;
-import org.apache.wicket.util.time.Duration;
 
 public final class KeyUpValidationBehavior extends AjaxFormComponentUpdatingBehavior {
 
@@ -24,8 +22,8 @@ public final class KeyUpValidationBehavior extends AjaxFormComponentUpdatingBeha
 		super.updateAjaxAttributes(attributes);
 
 		attributes.setThrottlingSettings(new ThrottlingSettings("throttling-" + getComponent().getMarkupId(),
-				Duration.milliseconds(500)));
-		attributes.setAllowDefault(true);
+				java.time.Duration.ofMillis(500)));
+		attributes.setPreventDefault(false);
 	}
 
 	@Override

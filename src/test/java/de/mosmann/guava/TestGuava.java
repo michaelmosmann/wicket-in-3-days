@@ -1,25 +1,20 @@
 package de.mosmann.guava;
 
-import static org.junit.Assert.*;
+import com.google.common.base.Function;
+import com.google.common.base.Functions;
+import com.google.common.base.Preconditions;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableMap.Builder;
+import com.google.common.collect.Lists;
+import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
-import javax.annotation.concurrent.Immutable;
-
-import org.junit.Test;
-
-import com.google.common.base.Function;
-import com.google.common.base.Functions;
-import com.google.common.base.Optional;
-import com.google.common.base.Preconditions;
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMap.Builder;
-import com.google.common.collect.Lists;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
 public class TestGuava {
@@ -62,17 +57,19 @@ public class TestGuava {
 		assertEquals("Klaus", map.get("K"));
 	}
 	
-	@Test(expected=IllegalArgumentException.class)
+	@Test
 	public void wrongIndex() {
 		List<String> strings = Lists.newArrayList("Klaus","Bert","Danny");
-		subList(strings, -1,1);
+		assertThatThrownBy(() -> subList(strings, -1,1))
+						.isInstanceOf(IllegalArgumentException.class);
 	}
 	
 
-	@Test(expected=IllegalArgumentException.class)
+	@Test
 	public void wrongIndex2() {
 		List<String> strings = Lists.newArrayList("Klaus","Bert","Danny");
-		subList(strings, new GreaterZeroInt(-1),new Count(1));
+		assertThatThrownBy(() -> subList(strings, new GreaterZeroInt(-1),new Count(1)))
+				.isInstanceOf(IllegalArgumentException.class);
 	}
 
 	static <T> List<T> subList(List<T> source, int startidx, int len) {

@@ -1,12 +1,9 @@
 package de.mosmann.usermgmt;
 
-import static org.junit.Assert.*;
 
 import org.apache.wicket.Component;
 import org.apache.wicket.util.tester.FormTester;
 import org.apache.wicket.util.tester.WicketTester;
-import org.junit.Before;
-import org.junit.Test;
 
 import com.google.inject.Guice;
 import com.google.inject.Inject;
@@ -17,6 +14,11 @@ import de.mosmann.WicketApplication;
 import de.mosmann.config.Tests;
 import de.mosmann.persistence.service.IDummyService;
 import de.mosmann.topics.OverviewPage;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class NewDummyPanelTest {
 
@@ -25,7 +27,7 @@ public class NewDummyPanelTest {
 	@Inject
 	IDummyService _service;
 	
-	@Before
+	@BeforeEach
 	public void setUp() {
 		Injector injector = Guice.createInjector(new Tests());
 		tester = new WicketTester(new WicketApplication(injector));

@@ -1,9 +1,13 @@
 package de.mosmann.topics.converter;
 
-import static org.junit.Assert.*;
 
 import org.apache.wicket.util.convert.ConversionException;
-import org.junit.Test;
+import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 
 public class MoneyConverterTest {
@@ -24,13 +28,15 @@ public class MoneyConverterTest {
 		assertEquals("Euronen",money.currency());
 	}
 
-	@Test(expected=ConversionException.class)
+	@Test
 	public void wrongSampleShouldFail() {
-		new MoneyConverter().convertToObject("113a Euronen", null);
+		assertThatThrownBy(() -> new MoneyConverter().convertToObject("113a Euronen", null))
+				.isInstanceOf(ConversionException.class);
 	}
 
-	@Test(expected=ConversionException.class)
+	@Test
 	public void withoutCurrencyShouldFail() {
-		new MoneyConverter().convertToObject("113 ", null);
+		assertThatThrownBy(() -> new MoneyConverter().convertToObject("113 ", null))
+				.isInstanceOf(ConversionException.class);
 	}
 }

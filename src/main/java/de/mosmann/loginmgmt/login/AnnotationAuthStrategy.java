@@ -11,6 +11,8 @@ import org.apache.wicket.authorization.IAuthorizationStrategy;
 import org.apache.wicket.authorization.IUnauthorizedComponentInstantiationListener;
 import org.apache.wicket.authorization.UnauthorizedInstantiationException;
 import org.apache.wicket.request.component.IRequestableComponent;
+import org.apache.wicket.request.mapper.parameter.PageParameters;
+import org.apache.wicket.request.resource.IResource;
 
 public class AnnotationAuthStrategy implements IAuthorizationStrategy, IUnauthorizedComponentInstantiationListener {
 
@@ -28,6 +30,11 @@ public class AnnotationAuthStrategy implements IAuthorizationStrategy, IUnauthor
 	@Override
 	public boolean isActionAuthorized(Component component, Action action) {
 		return isNotSecureOrSessionHasValidLogin(component.getClass());
+	}
+
+	@Override
+	public boolean isResourceAuthorized(IResource resource, PageParameters parameters) {
+		return true;
 	}
 
 	private boolean isNotSecureOrSessionHasValidLogin(Class<?> type) {

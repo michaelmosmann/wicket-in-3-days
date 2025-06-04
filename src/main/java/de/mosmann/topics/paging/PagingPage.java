@@ -1,31 +1,20 @@
 package de.mosmann.topics.paging;
 
-import java.io.Serializable;
-import java.util.Date;
-import java.util.List;
-
-import javax.annotation.concurrent.Immutable;
-
-import org.apache.wicket.Component;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import de.flapdoodle.functions.Function3;
+import de.flapdoodle.wicket.model.Models;
+import de.mosmann.topics.BasePage;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.markup.html.list.ListItem;
 import org.apache.wicket.markup.html.list.ListView;
-import org.apache.wicket.markup.html.panel.Panel;
-import org.apache.wicket.model.AbstractReadOnlyModel;
 import org.apache.wicket.model.IModel;
-import org.apache.wicket.model.LoadableDetachableModel;
 import org.apache.wicket.model.Model;
-import org.hibernate.persister.entity.Loadable;
 
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-
-import de.flapdoodle.functions.Function1;
-import de.flapdoodle.functions.Function2;
-import de.flapdoodle.functions.Function3;
-import de.flapdoodle.wicket.model.Models;
-import de.mosmann.topics.BasePage;
+import java.io.Serializable;
+import java.util.Date;
+import java.util.List;
 
 public class PagingPage extends BasePage {
 
@@ -67,7 +56,7 @@ public class PagingPage extends BasePage {
 		};
 		add(listView);
 		
-		IModel<List<Integer>> wrong=new AbstractReadOnlyModel<List<Integer>>() {
+		IModel<List<Integer>> wrong=new IModel<List<Integer>>() {
 			@Override
 			public List<Integer> getObject() {
 				System.out.println("Called at "+new Date());

@@ -13,7 +13,7 @@ import org.apache.wicket.model.Model;
 
 public class NavLinksPanel extends Panel {
 
-	public NavLinksPanel(String id, IModel<List<? extends ILinkFactory>> linkFactories) {
+	public NavLinksPanel(String id, IModel<List<ILinkFactory>> linkFactories) {
 		super(id);
 		
 		add(new ListView<ILinkFactory>("links",linkFactories) {

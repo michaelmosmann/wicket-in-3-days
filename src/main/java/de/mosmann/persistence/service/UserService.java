@@ -5,8 +5,8 @@ import com.google.inject.persist.Transactional;
 
 import de.mosmann.persistence.entity.User;
 
-import javax.persistence.EntityManager;
-import javax.persistence.Query;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.Query;
 
 public class UserService implements IUserService {
     @Inject

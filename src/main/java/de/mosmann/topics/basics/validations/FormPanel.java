@@ -1,5 +1,6 @@
 package de.mosmann.topics.basics.validations;
 
+import java.time.Duration;
 import java.util.Date;
 
 import org.apache.wicket.ajax.AjaxRequestTarget;
@@ -13,7 +14,6 @@ import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.markup.html.form.validation.FormComponentFeedbackBorder;
 import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.IModel;
-import org.apache.wicket.util.time.Duration;
 import org.apache.wicket.validation.validator.StringValidator;
 
 import de.mosmann.common.models.property.PropertyModels;
@@ -61,11 +61,12 @@ public class FormPanel extends Panel {
 				target.appendJavaScript("jQuery('#"+nameField.getMarkupId()+"').addClass('error')");
 			}
 		});
+
+		// TODO das gibt es scheinbar nicht mehr
+//		AjaxFormValidatingBehavior.addToAllFormComponents(form, "onkeyup", Duration.ofMillis(500));
+//		AjaxFormValidatingBehavior.addToAllFormComponents(form, "onblur");
 		
-		AjaxFormValidatingBehavior.addToAllFormComponents(form, "onkeyup",Duration.milliseconds(500));
-		AjaxFormValidatingBehavior.addToAllFormComponents(form, "onblur");
-		
-		nameField.add(new AjaxFormValidatingBehavior(form, "onkeyup") {
+		nameField.add(new AjaxFormValidatingBehavior( "onkeyup") {
 			@Override
 			protected void onError(AjaxRequestTarget target) {
 				super.onError(target);

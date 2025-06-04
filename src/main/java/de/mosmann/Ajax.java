@@ -8,7 +8,7 @@ import org.apache.wicket.request.cycle.RequestCycle;
 import org.apache.wicket.util.visit.IVisit;
 import org.apache.wicket.util.visit.IVisitor;
 
-import com.google.common.base.Optional;
+import java.util.Optional;
 
 public class Ajax {
 
@@ -24,7 +24,7 @@ public class Ajax {
 	}
 
 	public static Optional<AjaxRequestTarget> ajaxRequestTarget() {
-		return Optional.fromNullable(RequestCycle.get().find(AjaxRequestTarget.class));
+		return RequestCycle.get().find(AjaxRequestTarget.class);
 	}
 
 	public static void addAllIfAjax(Component component, final Class<?> type) {

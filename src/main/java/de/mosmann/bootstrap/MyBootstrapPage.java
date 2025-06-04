@@ -1,19 +1,14 @@
 package de.mosmann.bootstrap;
 
+import com.google.common.collect.Lists;
+import de.agilecoders.wicket.core.Bootstrap;
+import de.mosmann.HomePage;
+import de.mosmann.topics.OverviewPage;
 import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.link.AbstractLink;
 import org.apache.wicket.markup.html.link.BookmarkablePageLink;
 import org.apache.wicket.model.Model;
-
-import com.google.common.collect.Lists;
-
-import de.agilecoders.wicket.core.Bootstrap;
-import de.agilecoders.wicket.core.markup.html.bootstrap.navbar.Navbar;
-import de.agilecoders.wicket.core.markup.html.bootstrap.navbar.NavbarButton;
-import de.agilecoders.wicket.core.markup.html.bootstrap.navigation.BootstrapPagingNavigator.Position;
-import de.mosmann.HomePage;
-import de.mosmann.topics.OverviewPage;
 
 
 public class MyBootstrapPage extends WebPage {

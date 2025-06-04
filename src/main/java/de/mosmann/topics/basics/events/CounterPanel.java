@@ -8,6 +8,8 @@ import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.request.cycle.RequestCycle;
 
+import java.util.Optional;
+
 public class CounterPanel extends Panel {
 
 	private Model<Integer> _counter;
@@ -31,11 +33,9 @@ public class CounterPanel extends Panel {
 		Object payload = event.getPayload();
 		if (payload instanceof Increment) {
 			_counter.setObject(_counter.getObject()+ ((Increment) payload).delta());
-		
-			AjaxRequestTarget ajaxRequestTarget = RequestCycle.get().find(AjaxRequestTarget.class);
-			if (ajaxRequestTarget!=null) {
-				ajaxRequestTarget.add(_label);
-			}
+
+			Optional<AjaxRequestTarget> ajaxRequestTarget = RequestCycle.get().find(AjaxRequestTarget.class);
+            ajaxRequestTarget.ifPresent(requestTarget -> requestTarget.add(_label));
 			
 		}
 	}

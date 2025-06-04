@@ -1,6 +1,7 @@
 package de.mosmann.topics.basics.events;
 
 import java.io.Serializable;
+import java.util.Optional;
 
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.AjaxFallbackLink;
@@ -51,10 +52,10 @@ public class ActionPanel extends Panel {
 		@Override
 		public AbstractLink newInstance(String id, int delta) {
 			return new AjaxFallbackLink<Integer>(id,Model.of(delta)) {
+
 				@Override
-				public void onClick(AjaxRequestTarget target) {
+				public void onClick(Optional<AjaxRequestTarget> target) {
 					send(getPage(), Broadcast.BREADTH, new Increment(getModelObject()));
-					
 				}
 			};
 		}
