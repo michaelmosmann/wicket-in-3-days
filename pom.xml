@@ -104,7 +104,11 @@
             <artifactId>wicket-extensions</artifactId>
             <version>${wicket.version}</version>
         </dependency>
-
+        <dependency>
+            <groupId>org.wicketstuff</groupId>
+            <artifactId>wicketstuff-select2</artifactId>
+            <version>${wicket.version}</version>
+        </dependency>
         <!--  HELPFULL DEPENDENCIES -->
         <dependency>
             <groupId>de.flapdoodle.wicket7-java8</groupId>

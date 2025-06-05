@@ -7,10 +7,14 @@ import java.util.List;
 
 import org.apache.wicket.extensions.ajax.markup.html.autocomplete.AutoCompleteSettings;
 import org.apache.wicket.extensions.ajax.markup.html.autocomplete.AutoCompleteTextField;
+import org.apache.wicket.extensions.ajax.markup.html.autocomplete.DefaultCssAutoCompleteTextField;
+import org.apache.wicket.markup.head.CssHeaderItem;
+import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.SubmitLink;
 import org.apache.wicket.markup.html.panel.FeedbackPanel;
 import org.apache.wicket.model.Model;
+import org.apache.wicket.request.resource.CssResourceReference;
 import org.apache.wicket.util.string.Strings;
 
 import de.mosmann.topics.BasePage;
@@ -41,6 +45,15 @@ public class AutoCompleteTextFieldPage extends BasePage {
                     }
                 }
                 return matches.iterator();
+            }
+
+            @Override
+            public void renderHead(final IHeaderResponse response)
+            {
+                super.renderHead(response);
+
+                response.render(CssHeaderItem.forReference(new CssResourceReference(
+                        DefaultCssAutoCompleteTextField.class, "DefaultCssAutoCompleteTextField.css")));
             }
         };
         
